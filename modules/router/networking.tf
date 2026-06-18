@@ -28,7 +28,7 @@ resource "opennebula_virtual_router_nic" "external" {
 
 data "opennebula_virtual_network_address_range" "internal" {
   virtual_network_id = data.opennebula_virtual_network.internal.id
-  id                 = "1"
+  id                 = "0"
 }
 
 resource "opennebula_virtual_router_nic" "internal" {
