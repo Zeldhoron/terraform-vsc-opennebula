@@ -17,6 +17,7 @@ locals {
 
 resource "opennebula_virtual_machine" "main" {
   name        = var.vm_name
+  group       = data.opennebula_group.primary.name
   description = "VM"
   cpu         = coalesce(var.cpu, data.opennebula_template.template.cpu)
   vcpu        = coalesce(var.cpu, data.opennebula_template.template.cpu)

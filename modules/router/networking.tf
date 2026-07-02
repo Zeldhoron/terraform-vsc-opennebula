@@ -23,7 +23,6 @@ resource "opennebula_virtual_router_nic" "external" {
   model             = "virtio"
 }
 
-
 data "opennebula_virtual_network_address_range" "internal" {
   virtual_network_id = data.opennebula_virtual_network.internal.id
   id                 = "0"

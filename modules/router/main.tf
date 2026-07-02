@@ -40,6 +40,7 @@ data "opennebula_template" "base" {
 
 resource "opennebula_virtual_router" "main" {
   name                 = local.router-name
+  group                = data.opennebula_group.primary.name
   instance_template_id = data.opennebula_template.base.id
 }
 data "opennebula_image" "image" {
@@ -52,6 +53,7 @@ resource "terraform_data" "port-forwards" {
 resource "opennebula_virtual_router_instance" "main" {
   count             = 2
   name              = "${local.router-name}-instance-${count.index}"
+  group             = data.opennebula_group.primary.name
   virtual_router_id = opennebula_virtual_router.main.id
   context           = local.final_context
   os {
